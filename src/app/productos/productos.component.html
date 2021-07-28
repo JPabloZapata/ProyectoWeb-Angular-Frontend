@@ -1,0 +1,19 @@
+<div class="my-2 text-left">
+  <button class="btn btn-rounded btn-primary" type="button" name="button" routerLink="/productos/form">Crear Producto</button>
+</div>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+  <div class="col" *ngFor="let producto of productos">
+    <div class="card">
+      <img src= "{{producto.image}}" class="card-img-top tamañoimg" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{producto.nombre}}</h5>
+        <hr>
+        <p class="card-text">Descripción: {{producto.descripcion}}</p>
+        <p class="card-text">Precio: {{producto.precio}}</p>
+        <p class="card-text">Fecha: {{producto.fechaCreada | date:"EEE dd, MMMM yyyy"}}</p>
+        <button type="button" name="button" [routerLink]="['/productos/form', producto.id]" class="btn btn-primary btn-sm">editar</button>
+        <button type="button" name="eliminar" (click)='delete(producto)' class="btn btn-danger btn-sm">eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
